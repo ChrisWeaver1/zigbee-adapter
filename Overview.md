@@ -68,14 +68,14 @@ The population of cluster attribute information takes place through
 ZigbeeAdapter::populateNodeInfo and populateXxxx
 
 These functions have a few important semantics.
-1 - You should be able to call populateNodeInfo and it should only
+1. You should be able to call populateNodeInfo and it should only
     do something if something needs to be done. i.e. it should retain
     enough state to determine whether it still has work to do.
-2 - Every call to read some data should have a callback and usually a
+1. Every call to read some data should have a callback and usually a
     timeoutFunc.
     The callback will be called when the readRsp completes and generally
     should wind up calling the populateXxx method again.
-3 - The populateXxx methods need to protect themselves from issuing the
+1. The populateXxx methods need to protect themselves from issuing the
     same read over and over again. So for example looking at
     populateClassifierAttributes reading the zoneType.
     - if node.readingZoneType is set, then it should just return
